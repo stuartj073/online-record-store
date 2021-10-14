@@ -2,7 +2,7 @@
 {% block content %}
 
 <div class="row">
-    <form class="col s12">
+    <form class="col s12" method="POST" action="{{ url_for('landing') }}">
         <div class="row">
             <div class="input-field col s6">
                 <input placeholder="Placeholder" id="first_name" name="first_name" type="text" class="validate">
@@ -14,7 +14,13 @@
             </div>
         </div>
         <div class="row">
-            <div class="input-field col s12">
+            <div class="input-field col s10">
+                <input id="username" name="username" type="text" class="validate">
+                <label for="username">Username</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s10">
                 <input id="password" name="password" type="password" class="validate">
                 <label for="password">Password</label>
             </div>
@@ -23,6 +29,13 @@
             <div class="input-field col s12">
                 <input id="email" name="email" type="email" class="validate">
                 <label for="email">Email</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="center-align">
+                <button class="btn waves-effect waves-light" type="submit" name="action">Register
+                    <i class="material-icons right"></i>
+                </button>
             </div>
         </div>
         <div class="row">
