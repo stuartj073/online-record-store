@@ -1,12 +1,41 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="col s12 m8">
-    <div class="card-panel grey lighten-5 z-depth-1">
-        <div class="row valign-wrapper">
-            <div class="col s8">
-                <img src="./images/clem-onojeghuo-pTeZKi29EYE-unsplash.jpg"> <!-- notice the "circle" class -->
-            </div>
-        </div>
+<div class="landing-page-img">
+    <img src="static/images/mick-haupt--EoUIP5q2q8-unsplash (3).jpg" height="600" width="100%">
+    <div class="login">
+        <h1 class="center-align"><a href="url_for('register')">Rate My Record</a></h1>
+        {% if not session["user"] %}
+        <h5 class="center-align"><a href="{{ url_for('register') }}">Register </a></h5> 
+        <h5 class="center-align"><a href="{{ url_for('login') }}">Log in</a></h5>
+        {% endif %}
     </div>
 </div>
+<section>
+    <h1 class="center-align">Reviews</h1>
+    {% for review in reviews %}
+        <div class="row" id="reviews">
+            <div class="col s-5 push s-7">
+                <img src="{{ review.img }}" height="250px" width="250px"
+                    alt="album-cover">
+            </div>
+            <div class="col s7 push s-5">
+                <h5 class="center-align">{{ review.album }}</h5>
+                <p><strong>Date of issue: </strong>{{ review.date }}</p>
+                <p><strong>Description: </strong>{{ review.desc }}</p>
+                <p><strong>Genre: </strong>{{ review.genre }}</p>
+                <p><strong>Location of origin: </strong>{{ review.location }}</p>
+                <p><strong>Created by: </strong>{{ review.created_by }}</p>
+                {% if session.user %}
+                <div class="row">
+                    <a class="waves-effect waves-light btn-large green"><i class="material-icons">Add to wishlist</i></a>
+                    {% if session.user == "admin" or "created_by" %}
+                    <a href=""class="waves-effect waves-light btn-large blue"><i class="material-icons">Edit</i></a>
+                    <a href="{{ url_for('delete_review', review_id = review._id) }}" class="waves-effect waves-light btn-large red"><i class="material-icons">Delete</i></a>
+                    {% endif %}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+</section>
+{% endfor %}
 {% endblock %}

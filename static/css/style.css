@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gabriela&display=swap');
 
 * {
     margin:0;
@@ -7,9 +8,122 @@
 }
 
 body {
-    color:red;
+    color:#212121;
     font-family: 'Zilla Slab', serif;
+    font-weight: 700;
+    background-color: #eeeeee;
 }
+
+a {
+    color:inherit;
+}
+
+/************************************ HEADER LINKS **/
+
+nav {
+    font-family: 'Gabriela', serif;
+    letter-spacing: 1px;
+    height:100px;
+}
+
+nav a {
+    margin:0 auto;
+}
+
+.menu {
+    text-transform: uppercase;
+}
+
+#logo {
+    padding-left: 20px;
+}
+
+.login {
+    background-color: #ef5350;
+    min-width:50%;
+    position:absolute;
+    top:40%;
+    left:25%;
+    padding:5px;
+    border-radius: 2px;
+}
+
+.login h5 a:hover {
+    text-decoration: underline;
+}
+
+.landing-page-img {
+    position:relative;
+    width:100%;
+}
+
+.landing-page-img h1 {
+    font-family: 'Gabriela', serif;
+}
+
+/************************************ PHONE MENU **/
+
+.sidenav li a {
+    font-size: 3rem;
+    padding:20px 10px;
+    margin-top:20px;
+    overflow: visible;
+    height:100px;
+    font-family: 'Gabriela', serif;
+
+}
+
+.sidenav {
+    background-color: #e0e0e0 ;
+}
+
+/************************************ HEADER LINKS **/
+
+.form {
+    margin:30px;
+}
+
+.nav-wrapper {
+    background-color:#ef5350;
+}
+
+/************************************ Reviews **/
+
+#reviews {
+    background-color:lightgrey;
+    min-height:300px;
+    letter-spacing: 3px;    
+}
+
+.album-img {
+    height:100%;
+    background-color: black;
+}
+
+#reviews img {
+    border-radius: 10px;
+    border:1px solid grey;
+    display:flex;
+    margin:20px;
+}
+
+#reviews h5 {
+    font-weight:2000;
+}
+
+#reviews p {
+    padding-top:15px;
+}
+
+.btn-large i {
+    font-size: 0.8rem;
+}
+
+.btn-large {
+    margin: 10px 3px 2px;
+}
+
+
 
 
 

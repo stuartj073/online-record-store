@@ -1,10 +1,11 @@
 {% extends "base.html" %}
 {% block content %}
 
+<h2 class="center-align">Register</h2>
 <div class="row">
-    <form class="col s12" method="POST" action="{{ url_for('landing') }}">
+    <form class="col s12 form" method="POST" action="{{ url_for('register') }}">
         <div class="row">
-            <div class="input-field col s6">
+            <div class="input-field col s12">
                 <input placeholder="Placeholder" id="first_name" name="first_name" type="text" class="validate">
                 <label for="first_name">First Name</label>
             </div>

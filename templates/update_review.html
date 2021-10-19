@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2 class="center-align">Update review !</h2>
+<div class="row">
+    <div class="col s-6">
+        <form method="POST" action="{{ url_for('update_review') }}">
+            <div class="row">
+                <div class="input-field col s8 offset-m2">
+                    <input id="album" name="album" type="text" class="validate" required>
+                    <label class="center-align" for="album">Album Title</label>
+                </div>
+                <div class="input-field col s8 offset-m2">
+                    <input id="date" type="text" name="date" class="validate">
+                    <label for="date">Date</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s8 offset-m2">
+                    <textarea id="desc" name="desc" class="materialize-textarea"></textarea>
+                    <label for="desc">Description</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s8 offset-m2">
+                    <input id="genre" name="genre" type="text" class="validate">
+                    <label for="genre">Genre</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s8 offset-m2">
+                    <input id="location" name="location" type="text" class="validate">
+                    <label for="location">Location</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s8 offset-m2">
+                    <input id="name" name="name" type="text" class="validate">
+                    <label for="name">Name</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="center-align">
+                    <button class="btn waves-effect waves-light" type="submit" name="action">Update Review
+                        <i class="material-icons right"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="col s-6">
+        <img src="static/images/clem-onojeghuo-pTeZKi29EYE-unsplash.jpg" height="300" width="300">
+    </div>
+</div>
+
+{% endblock %}

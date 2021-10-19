@@ -5,6 +5,9 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css"
+    integrity="sha512-xA6Hp6oezhjd6LiLZynuukm80f8BoZ3OpcEYaqKoCV3HKQDrYjDE1Gu8ocxgxoXmwmSzM4iqPvCsOkQNiu41GA=="
+    crossorigin="anonymous" type="text/css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
   {% block styles %}
@@ -15,27 +18,49 @@
 <body>
   <nav>
     <div class="nav-wrapper">
-      <a href="#" class="brand-logo center">TurnStyle</a>
-      <span>A place where likeminded people meet</span>
-      <ul id="nav-mobile" class="left hide-on-med-and-down">
-        <li><a href="sass.html">About</a></li>
+      <a href="{{ url_for('landing') }}" class="brand-logo">Rate My Record</a>
+      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="fas fa-bars"></i></a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="{{ url_for('landing') }}">Home</a></li>
+        <li><a href="#">About</a></li>
+        {% if session.user %}
+        <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
+        <li><a href="{{ url_for('add_review') }}">Add A Review</a></li>
+        <li><a href="{{ url_for('manage_reviews') }}">Manage My Reviews</a></li>
+        <li><a href="{{ url_for('logout') }}">Logout</a></li>
+        {% else %}
+        <li><a href="{{ url_for('login') }}">Log in</a></li>
         <li><a href="{{ url_for('register') }}">Register</a></li>
-        <li><a href="">JavaScript</a></li>
+        {% endif %}
       </ul>
     </div>
   </nav>
+
+  <ul class="sidenav" id="mobile-demo">
+    <li><a href="{{ url_for('landing') }}">Home</a></li>
+    <li><a href="#">About</a></li>
+    {% if session.user %}
+    <li><a href="{{ url_for('profile', username=session['user']) }}">Profile</a></li>
+    <li><a href="{{ url_for('add_review') }}">Add A Review</a></li>
+    <li><a href="{{ url_for('manage_reviews') }}">Manage My Reviews</a></li>
+    <li><a href="{{ url_for('logout') }}">Logout</a></li>
+    {% else %}
+    <li><a href="{{ url_for('login') }}">Log in</a></li>
+    <li><a href="{{ url_for('register') }}">Register</a></li>
+    {% endif %}
+  </ul>
   <section>
     {% with messages = get_flashed_messages() %}
-      {% if messages %}
-        {% for message in messages %}
-          <div class="row flashes">
-            <h4 class="light-blue lighten-4 center-align">{{ message }}</h4>
-          </div>
-        {% endfor %}
-      {% endif %}
+    {% if messages %}
+    {% for message in messages %}
+    <div class="row flashes">
+      <h4 class="light-blue lighten-4 center-align">{{ message }}</h4>
+    </div>
+    {% endfor %}
+    {% endif %}
     {% endwith %}
   </section>
-  
+
   <section class="container">
     {% block content %}
     {% endblock %}
@@ -44,7 +69,9 @@
   <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
     crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-  <script src="{{ url_for('static', filename='script.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+  {% block scripts %}
+  {% endblock %}
 </body>
 
 </html>
